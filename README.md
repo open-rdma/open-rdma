@@ -297,13 +297,7 @@ If Open-RDMA helps you, or you believe in open-source spirit, please give us a â
 
 **Let's build the world's leading open-source RDMA for AI project together!**
 
-<a href="https://www.star-history.com/?repos=open-rdma%2Fopen-rdma&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=open-rdma/open-rdma&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=open-rdma/open-rdma&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=open-rdma/open-rdma&type=date&legend=top-left" />
- </picture>
-</a>
+<img alt="Star History Chart" src="https://github.com/jzhg6/open-rdma/releases/download/star-history/star.png" width="657">
 
 ---
 
