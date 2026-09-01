@@ -127,6 +127,7 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 <td width="50%">
 
 ### 🌱 初学者友好
+
 公开全部资料，配有入门指导，助力更多小白成为RDMA专家
 
 </td>
@@ -152,7 +153,16 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 
 <table>
 <tr>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
+
+### [open-rdma-operation-manual](./open-rdma-operation-manual/)
+
+[![GitHub stars](https://img.shields.io/github/stars/jzhg6/open-rdma?style=social)](https://github.com/jzhg6/open-rdma)
+
+open-rdma项目的入门操作手册。
+
+</td>
+<td width="25%" align="center" valign="top">
 
 ### [open-rdma-rtl](https://github.com/open-rdma/open-rdma-rtl)
 
@@ -161,7 +171,7 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 open-rdma项目的硬件RTL代码
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [open-rdma-driver](https://github.com/open-rdma/open-rdma-driver)
 
@@ -170,7 +180,7 @@ open-rdma项目的硬件RTL代码
 open-rdma项目的驱动代码，包含用户态驱动和内核态驱动
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [open-rdma-dev-env](https://github.com/open-rdma/open-rdma-dev-env)
 
@@ -181,7 +191,7 @@ open-rdma项目的驱动代码，包含用户态驱动和内核态驱动
 </td>
 </tr>
 <tr>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [bluespec-lsp](https://github.com/open-rdma/bluespec-lsp)
 
@@ -190,7 +200,7 @@ open-rdma项目的驱动代码，包含用户态驱动和内核态驱动
 Bluespec SystemVerilog的Language Server，为BSV项目开发提供丝滑体验。
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [UCAgent (Fork)](https://github.com/open-rdma/UCAgent)
 
@@ -199,7 +209,7 @@ Bluespec SystemVerilog的Language Server，为BSV项目开发提供丝滑体验�
 由北京开源芯片研究院推出的AI Agent驱动的RTL验证框架，我们为其添加了对Cocotb测试环境的支持。
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [cocotbext-pcie (Fork)](https://github.com/open-rdma/cocotbext-pcie)
 

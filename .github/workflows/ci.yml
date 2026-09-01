@@ -1,0 +1,52 @@
+name: CI 自动部署文档站点
+
+on:
+  push:
+    branches: [docs/update-entry] # 只有推送到 docs/update-entry 分支才触发部署
+    paths:          # 限制规定路径下的变更才触发部署
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/**'
+      - 'requirements.txt'
+  workflow_dispatch: # 允许在 GitHub 网页上手动触发
+
+# 赋予工作流写入权限，以便后续推送构建结果
+permissions:
+  contents: write   # 允许推送代码到 gh-pages 分支
+  pages: write      # 允许与 GitHub Pages 服务交互
+  id-token: write   # 允许生成 OIDC 令牌（可选）
+
+concurrency:
+  group: "pages"                # 所有 Pages 部署任务归为一组
+  cancel-in-progress: false     # 新任务排队，不打断正在进行的部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # 获取全部历史，某些插件可能需要
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 安装依赖
+        run: |
+          pip install -r requirements.txt
+
+      - name: 构建站点
+        run: mkdocs build --clean
+        # 这会生成一个 site/ 目录，包含完整静态站点
+
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages   # 自动推送到 gh-pages 分支
+          force_orphan: true         # 保持 gh-pages 分支只有最后一次构建的记录，更干净

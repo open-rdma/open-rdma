@@ -1,0 +1,90 @@
+site_name: Open-RDMA-Operation-Manual
+docs_dir: open-rdma-operation-manual
+site_description: open rdma                # 项目描述
+repo_name: jzhg6/open-rdma  # 例如: open-rdma/open-rdma-docs
+repo_url: https://github.com/jzhg6/open-rdma/tree/docs/update-entry # 仓库地址
+copyright: Copyright &copy; 2026 open-rdma # 版权信息
+
+nav:
+  - Welcome: index.md
+  - 英文手册: 
+    - getting-started:
+      - introduction: open-rdma-operation-manual_EN/1. getting-started/introduction.md
+      - rtl-simulation: open-rdma-operation-manual_EN/1. getting-started/rtl-simulation.md
+      - installation: open-rdma-operation-manual_EN/1. getting-started/installation.md
+    - build-guide: open-rdma-operation-manual_EN/2. build-guide/compile-and-program-guide_EN.md
+    - ftile-debug-guide: open-rdma-operation-manual_EN/3. ftile-debug-guide/FTile-Debug-and-SystemConsole-Guide_EN.md
+  - 中文手册: 
+    - 快速开始: 
+      - Blue RDMA Rust 驱动介绍:  open-rdma-operation-manual_CN/1. getting-started/introduction.md
+      - 仿真环境准备: open-rdma-operation-manual_CN/1. getting-started/rtl-simulation.md
+      - 驱动安装: open-rdma-operation-manual_CN/1. getting-started/installation.md
+    - 源码编译与烧录: open-rdma-operation-manual_CN/2. build-guide/compile-and-program-guide_CN.md
+    - FTile 调试工程: open-rdma-operation-manual_CN/3. ftile-debug-guide/FTile-Debug-and-SystemConsole-Guide_CN.md
+    - Signaltap 抓取信号: open-rdma-operation-manual_CN/4. signaltap/signaltap.md
+  
+theme:
+  name: material
+  features:
+    # - navigation.tabs        # 顶层导航使用标签页
+    - navigation.indexes
+    - navigation.sections      # 将导航项分组为章节
+    - header.autohide          # 向下滚动时自动隐藏头部
+    - search.suggest           # 搜索时提供关键词建议
+    - search.highlight         # 搜索时高亮显示关键词
+    - content.tabs.link        # 允许跨页面同步选项卡状态
+    - navigation.instant       # 即时加载，提升页面切换速度
+    - navigation.tracking      # 更新URL锚点，方便分享
+    - content.code.annotate    # 代码块注释
+    - toc.integrate            # 将目录整合到侧边栏
+    - toc.follow               # 目录跟随滚动高亮
+    - navigation.path          # 显示导航路径，即面包屑
+    - navigation.top           # 添加返回顶部的按钮
+    - navigation.footer        # 在页面底部显示上一页/下一页按钮
+    - content.code.copy        # 代码块右上角显示复制按钮
+   
+  icon:
+    repo: fontawesome/brands/github  # 顶部栏的GitHub图标
+ 
+  palette:
+    # 亮色模式配置
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: teal             # 主题主色调，可改为 indigo, blue, red 等
+      accent: cyan              # 强调色，可改为 amber, green 等
+    # 暗色模式配置
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+#plugins:
+#  - gen-files:
+#      scripts:
+#        - scripts/generate_index.py   # 脚本路径相对于项目根目录
+
+# 调用目录生成脚本
+hooks:
+  - scripts/generate_index.py
+
+# Markdown 扩展，支持更丰富的语法
+markdown_extensions:
+  - admonition                  # 支持警示框 (Note, Warning, Tip 等)
+  - pymdownx.details            # 支持可折叠的细节块
+  - pymdownx.keys               # 支持键盘按键样式
+  - pymdownx.superfences        # 支持嵌套代码块
+  - pymdownx.tabbed:
+      alternate_style: true     # 支持选项卡内容
+
+# 自定义 CSS 与 JS
+# extra_javascript:
+#  - static/nav-toggle.js
+
+# extra_css:
+#  - static/nav-fix.css
