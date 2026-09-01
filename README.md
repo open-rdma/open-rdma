@@ -73,7 +73,7 @@ OpenRDMA is a GPU-friendly RDMA design: the GPU submits only a short instruction
 
 <div>
 
-* **[2026-08-31] [Open-RDMA Project Surpasses 350 Stars](https://github.com/jzhg6/open-rdma/releases/download/star-history/star.png)**
+* **[2026-08-31] [Open-RDMA Project Surpasses 350 Stars](https://raw.githubusercontent.com/jzhg6/open-rdma/star-history-assets/star.png)**
 * **[2026-05-20] [Open-RDMA Project Surpasses 250 Stars](https://emanuelef.github.io/daily-stars-explorer/#/open-rdma/open-rdma)**
 * **[2026-05-07] [Weekly Report #18 Released](https://github.com/open-rdma/open-rdma-driver/blob/dev/docs/zh-CN/records/weekly-report/2026-05-07.md)**
 * **[2026-04-09] [Weekly Report #14 Released](https://github.com/open-rdma/open-rdma-driver/blob/dev/docs/zh-CN/records/weekly-report/2026-04-09.md)**
@@ -297,7 +297,7 @@ If Open-RDMA helps you, or you believe in open-source spirit, please give us a â
 
 **Let's build the world's leading open-source RDMA for AI project together!**
 
-<img alt="Star History Chart" src="https://github.com/jzhg6/open-rdma/releases/download/star-history/star.png" width="657">
+<img alt="Star History Chart" src="https://raw.githubusercontent.com/jzhg6/open-rdma/star-history-assets/star.png" width="657">
 
 ---
 
