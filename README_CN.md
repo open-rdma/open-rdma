@@ -8,7 +8,7 @@
 
 **适合科研人员、高校学生与RDMA领域新人**
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
 [![Platform](https://img.shields.io/badge/Platform-FPGA%20%7C%20Linux-orange.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
@@ -26,7 +26,7 @@
 
 **打破黑盒，掌控网络** | 从 RTL 到驱动的完整开源 RDMA 技术栈
 
-[🌟 给个 Star](#-给个-star) · [📖 文档](#) · [🚀 快速开始](#-快速开始) · [🤝 参与贡献](#-参与贡献)
+[🌟 给个 Star](#-给个-star) · [📚 学习资源](#-相关领域学习资源) · [🚀 快速开始](#-快速开始) · [🤝 参与贡献](#-参与贡献)
 
 </div>
 
@@ -142,7 +142,7 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 [![Bluespec](https://img.shields.io/badge/Bluespec-硬件%20RTL-0077b6)]()
 [![C](https://img.shields.io/badge/C-内核态驱动-555555)]()
 [![Rust](https://img.shields.io/badge/Rust-用户态驱动-dea584)]()
-[![CUDA](https://img.shields.io/badge/CUDA-通算融合算子-76b900)]()
+[![CUDA](https://img.shields.io/badge/CUDA-GPU%20Kernel-76b900)]()
 [![Python](https://img.shields.io/badge/Python-推理%20%7C%20验证-3776ab)]()
 
 </div>
@@ -230,33 +230,35 @@ Bluespec SystemVerilog的Language Server，为BSV项目开发提供丝滑体验�
 
 ### 一键启动开发环境
 
-我们为新用户准备了开箱即用的 Docker 镜像，包含所有开发工具和依赖：
+第一次接触项目？请从 [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env) 开始：
+它提供了开箱即用的容器，内置完整工具链（Bluespec 编译器、Rust 工具链、`rdma-core` 以及 Open-RDMA
+源码），并在容器内启动 QEMU 虚拟机用于驱动开发。
+
+前置条件：一台安装了 Docker 与 Docker Compose 的 Linux 主机。
 
 ```bash
-# 拉取镜像并启动
-docker run -it open-rdma/dev-env:latest
+# 1. 克隆开发环境仓库
+git clone https://github.com/open-rdma/open-rdma-dev-env.git
+cd open-rdma-dev-env
 
-# 或使用 docker-compose
-docker-compose up -d
+# 2. 一键启动：自动构建镜像并在容器内启动虚机
+./quick-start.sh
+
+# 3. 使用 root:root 登录虚机，运行基础双端测试
+cd /root/open-rdma/open-rdma-driver && ./tests/base_test/scripts/test_send_recv_sim.sh
+```
+
+`Ctrl+B, D` 可退出会话并让虚机在后台继续运行。重新进入会话：
+
+```bash
+docker compose exec open-rdma tmux attach-session -t open-rdma
 ```
 
 <details>
-<summary>📖 详细安装步骤</summary>
+<summary>📖 详细安装步骤、手动启动与常见问题</summary>
 
-```bash
-# 1. 克隆仓库
-git clone https://github.com/open-rdma/open-rdma.git
-cd open-rdma
-
-# 2. 安装依赖
-make deps
-
-# 3. 编译
-make build
-
-# 4. 运行测试
-make test
-```
+SSH 公钥配置、镜像源切换、本地构建镜像、代理配置、常见问题以及镜像设计说明，请见
+[`open-rdma-dev-env` README](https://github.com/open-rdma/open-rdma-dev-env)。
 
 </details>
 
@@ -272,7 +274,8 @@ make test
 - 📖 改进文档
 - 🔧 提交 Pull Request
 
-查看 [贡献指南](CONTRIBUTING.md) 了解更多。
+完整的贡献流程与提交信息规范请见 [贡献指南](CONTRIBUTING_CN.md)；如果你是刚接触 RDMA、
+不知道从哪里入手的同学，请直接看 [🎓 学生上手路径](CONTRIBUTING_CN.md#-学生上手路径)。
 
 ---
 
@@ -284,7 +287,7 @@ make test
 
 ## 📜 许可证
 
-本项目采用 [Apache 2.0 License](LICENSE) 开源协议。
+本项目采用 [GNU General Public License v2.0](LICENSE) 开源协议。
 
 ---
 

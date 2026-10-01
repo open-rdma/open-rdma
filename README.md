@@ -8,7 +8,7 @@ English | [**简体中文**](README_CN.md)
 
 **Ideal for Researchers, University Students, and RDMA Beginners**
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
 [![Platform](https://img.shields.io/badge/Platform-FPGA%20%7C%20Linux-orange.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
@@ -26,7 +26,7 @@ Whether you are a practitioner or student in hardware (FPGA, ASIC), software inf
 
 **Break the Black Box, Master the Network** | Complete Open-Source RDMA Technology Stack from RTL to Drivers
 
-[🌟 Star Us](#-star-us) · [📖 Documentation](#) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
+[🌟 Star Us](#-star-us) · [📚 Learning Resources](#-learning-resources) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
 
 </div>
 
@@ -231,33 +231,36 @@ PCIe behavioral and simulation models based on Cocotb, we added Altera RTile sup
 
 ### One-Click Development Environment
 
-We provide a ready-to-use Docker image for new users, containing all development tools and dependencies:
+New to the project? Start with [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env):
+an out-of-the-box container that bundles the whole toolchain — the Bluespec compiler, the Rust
+toolchain, `rdma-core` and the Open-RDMA sources — and boots a QEMU virtual machine for driver work.
+
+Prerequisites: a Linux host with Docker and Docker Compose installed.
 
 ```bash
-# Pull and start the image
-docker run -it open-rdma/dev-env:latest
+# 1. Clone the development environment
+git clone https://github.com/open-rdma/open-rdma-dev-env.git
+cd open-rdma-dev-env
 
-# Or use docker-compose
-docker-compose up -d
+# 2. One-click start: builds the image and boots the VM inside the container
+./quick-start.sh
+
+# 3. Log into the VM as root:root, then run the baseline send/recv test
+cd /root/open-rdma/open-rdma-driver && ./tests/base_test/scripts/test_send_recv_sim.sh
+```
+
+`Ctrl+B, D` detaches from the VM session and leaves it running in the background. To re-attach:
+
+```bash
+docker compose exec open-rdma tmux attach-session -t open-rdma
 ```
 
 <details>
-<summary>📖 Detailed Installation Steps</summary>
+<summary>📖 Detailed installation, manual startup and troubleshooting</summary>
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/open-rdma/open-rdma.git
-cd open-rdma
-
-# 2. Install dependencies
-make deps
-
-# 3. Build
-make build
-
-# 4. Run tests
-make test
-```
+SSH key setup, switching image registries, building the image locally, proxy configuration, the FAQ
+and the image design notes all live in the
+[`open-rdma-dev-env` README](https://github.com/open-rdma/open-rdma-dev-env).
 
 </details>
 
@@ -273,7 +276,9 @@ We welcome all forms of contributions!
 - 📖 Improve documentation
 - 🔧 Submit a Pull Request
 
-See [Contributing Guide](CONTRIBUTING.md) for more details.
+See the [Contributing Guide](CONTRIBUTING.md) for the full workflow and commit conventions, and the
+[🎓 student onboarding path](CONTRIBUTING.md#-student-onboarding-path) if you are new to RDMA and
+are wondering where to start.
 
 ---
 
@@ -285,7 +290,7 @@ See [Contributing Guide](CONTRIBUTING.md) for more details.
 
 ## 📜 License
 
-This project is licensed under the [Apache 2.0 License](LICENSE).
+This project is licensed under the [GNU General Public License v2.0](LICENSE).
 
 ---
 
