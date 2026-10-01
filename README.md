@@ -8,7 +8,7 @@ English | [**简体中文**](README_CN.md)
 
 **Ideal for Researchers, University Students, and RDMA Beginners**
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
 [![Platform](https://img.shields.io/badge/Platform-FPGA%20%7C%20Linux-orange.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
@@ -290,7 +290,7 @@ are wondering where to start.
 
 ## 📜 License
 
-This project is licensed under the [Apache 2.0 License](LICENSE).
+This project is licensed under the [GNU General Public License v2.0](LICENSE).
 
 ---
 

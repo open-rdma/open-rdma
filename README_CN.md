@@ -8,7 +8,7 @@
 
 **适合科研人员、高校学生与RDMA领域新人**
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
 [![Platform](https://img.shields.io/badge/Platform-FPGA%20%7C%20Linux-orange.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
@@ -287,7 +287,7 @@ SSH 公钥配置、镜像源切换、本地构建镜像、代理配置、常见�
 
 ## 📜 许可证
 
-本项目采用 [Apache 2.0 License](LICENSE) 开源协议。
+本项目采用 [GNU General Public License v2.0](LICENSE) 开源协议。
 
 ---
 
