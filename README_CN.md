@@ -142,7 +142,7 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 [![Bluespec](https://img.shields.io/badge/Bluespec-硬件%20RTL-0077b6)]()
 [![C](https://img.shields.io/badge/C-内核态驱动-555555)]()
 [![Rust](https://img.shields.io/badge/Rust-用户态驱动-dea584)]()
-[![CUDA](https://img.shields.io/badge/CUDA-通算融合算子-76b900)]()
+[![CUDA](https://img.shields.io/badge/CUDA-GPU%20Kernel-76b900)]()
 [![Python](https://img.shields.io/badge/Python-推理%20%7C%20验证-3776ab)]()
 
 </div>
