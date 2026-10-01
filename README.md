@@ -26,7 +26,7 @@ Whether you are a practitioner or student in hardware (FPGA, ASIC), software inf
 
 **Break the Black Box, Master the Network** | Complete Open-Source RDMA Technology Stack from RTL to Drivers
 
-[🌟 Star Us](#-star-us) · [📖 Documentation](#) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
+[🌟 Star Us](#-star-us) · [📚 Learning Resources](#-learning-resources) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
 
 </div>
 
