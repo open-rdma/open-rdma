@@ -272,7 +272,8 @@ make test
 - 📖 改进文档
 - 🔧 提交 Pull Request
 
-查看 [贡献指南](CONTRIBUTING.md) 了解更多。
+完整的贡献流程与提交信息规范请见 [贡献指南](CONTRIBUTING_CN.md)；如果你是刚接触 RDMA、
+不知道从哪里入手的同学，请直接看 [🎓 学生上手路径](CONTRIBUTING_CN.md#-学生上手路径)。
 
 ---
 

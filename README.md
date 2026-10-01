@@ -273,7 +273,9 @@ We welcome all forms of contributions!
 - 📖 Improve documentation
 - 🔧 Submit a Pull Request
 
-See [Contributing Guide](CONTRIBUTING.md) for more details.
+See the [Contributing Guide](CONTRIBUTING.md) for the full workflow and commit conventions, and the
+[🎓 student onboarding path](CONTRIBUTING.md#-student-onboarding-path) if you are new to RDMA and
+are wondering where to start.
 
 ---
 
