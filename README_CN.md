@@ -230,33 +230,35 @@ Bluespec SystemVerilog的Language Server，为BSV项目开发提供丝滑体验�
 
 ### 一键启动开发环境
 
-我们为新用户准备了开箱即用的 Docker 镜像，包含所有开发工具和依赖：
+第一次接触项目？请从 [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env) 开始：
+它提供了开箱即用的容器，内置完整工具链（Bluespec 编译器、Rust 工具链、`rdma-core` 以及 Open-RDMA
+源码），并在容器内启动 QEMU 虚拟机用于驱动开发。
+
+前置条件：一台安装了 Docker 与 Docker Compose 的 Linux 主机。
 
 ```bash
-# 拉取镜像并启动
-docker run -it open-rdma/dev-env:latest
+# 1. 克隆开发环境仓库
+git clone https://github.com/open-rdma/open-rdma-dev-env.git
+cd open-rdma-dev-env
 
-# 或使用 docker-compose
-docker-compose up -d
+# 2. 一键启动：自动构建镜像并在容器内启动虚机
+./quick-start.sh
+
+# 3. 使用 root:root 登录虚机，运行基础双端测试
+cd /root/open-rdma/open-rdma-driver && ./tests/base_test/scripts/test_send_recv_sim.sh
+```
+
+`Ctrl+B, D` 可退出会话并让虚机在后台继续运行。重新进入会话：
+
+```bash
+docker compose exec open-rdma tmux attach-session -t open-rdma
 ```
 
 <details>
-<summary>📖 详细安装步骤</summary>
+<summary>📖 详细安装步骤、手动启动与常见问题</summary>
 
-```bash
-# 1. 克隆仓库
-git clone https://github.com/open-rdma/open-rdma.git
-cd open-rdma
-
-# 2. 安装依赖
-make deps
-
-# 3. 编译
-make build
-
-# 4. 运行测试
-make test
-```
+SSH 公钥配置、镜像源切换、本地构建镜像、代理配置、常见问题以及镜像设计说明，请见
+[`open-rdma-dev-env` README](https://github.com/open-rdma/open-rdma-dev-env)。
 
 </details>
 

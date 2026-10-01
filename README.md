@@ -231,33 +231,36 @@ PCIe behavioral and simulation models based on Cocotb, we added Altera RTile sup
 
 ### One-Click Development Environment
 
-We provide a ready-to-use Docker image for new users, containing all development tools and dependencies:
+New to the project? Start with [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env):
+an out-of-the-box container that bundles the whole toolchain — the Bluespec compiler, the Rust
+toolchain, `rdma-core` and the Open-RDMA sources — and boots a QEMU virtual machine for driver work.
+
+Prerequisites: a Linux host with Docker and Docker Compose installed.
 
 ```bash
-# Pull and start the image
-docker run -it open-rdma/dev-env:latest
+# 1. Clone the development environment
+git clone https://github.com/open-rdma/open-rdma-dev-env.git
+cd open-rdma-dev-env
 
-# Or use docker-compose
-docker-compose up -d
+# 2. One-click start: builds the image and boots the VM inside the container
+./quick-start.sh
+
+# 3. Log into the VM as root:root, then run the baseline send/recv test
+cd /root/open-rdma/open-rdma-driver && ./tests/base_test/scripts/test_send_recv_sim.sh
+```
+
+`Ctrl+B, D` detaches from the VM session and leaves it running in the background. To re-attach:
+
+```bash
+docker compose exec open-rdma tmux attach-session -t open-rdma
 ```
 
 <details>
-<summary>📖 Detailed Installation Steps</summary>
+<summary>📖 Detailed installation, manual startup and troubleshooting</summary>
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/open-rdma/open-rdma.git
-cd open-rdma
-
-# 2. Install dependencies
-make deps
-
-# 3. Build
-make build
-
-# 4. Run tests
-make test
-```
+SSH key setup, switching image registries, building the image locally, proxy configuration, the FAQ
+and the image design notes all live in the
+[`open-rdma-dev-env` README](https://github.com/open-rdma/open-rdma-dev-env).
 
 </details>
 
