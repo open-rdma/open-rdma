@@ -72,6 +72,10 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 
 <div>
 
+* **[2026-10-23] [软硬件协同重传开发完成](https://github.com/open-rdma/open-rdma-rtl)**
+* **[2026-10-23] [基于 ns-3 的项目实验指南上线](https://github.com/open-rdma/open-rdma-driver/tree/dev/ns3/OpenRDMA-Offline)**
+* **[2026-10-08] 协议接收架构开发完成**
+* **[2026-09-24] 协议发送架构开发完成**
 * **[2026-08-31] [open-rdma项目Star数量突破350](https://raw.githubusercontent.com/jzhg6/open-rdma/star-history-assets/star.png)**
 * **[2026-05-20] [open-rdma项目Star数量突破250](https://emanuelef.github.io/daily-stars-explorer/#/open-rdma/open-rdma)**
 * **[2026-05-07] [开源周报第18期发布](https://github.com/open-rdma/open-rdma-driver/blob/dev/docs/zh-CN/records/weekly-report/2026-05-07.md)**

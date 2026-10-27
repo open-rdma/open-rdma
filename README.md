@@ -73,6 +73,10 @@ OpenRDMA is a GPU-friendly RDMA design: the GPU submits only a short instruction
 
 <div>
 
+* **[2026-10-23] [Hardware-Software Co-Designed Retransmission Development Completed](https://github.com/open-rdma/open-rdma-rtl)**
+* **[2026-10-23] [ns-3 Based Project Lab Guide Released](https://github.com/open-rdma/open-rdma-driver/tree/dev/ns3/OpenRDMA-Offline)**
+* **[2026-10-08] Protocol Receive Architecture Development Completed**
+* **[2026-09-24] Protocol Transmit Architecture Development Completed**
 * **[2026-08-31] [Open-RDMA Project Surpasses 350 Stars](https://raw.githubusercontent.com/jzhg6/open-rdma/star-history-assets/star.png)**
 * **[2026-05-20] [Open-RDMA Project Surpasses 250 Stars](https://emanuelef.github.io/daily-stars-explorer/#/open-rdma/open-rdma)**
 * **[2026-05-07] [Weekly Report #18 Released](https://github.com/open-rdma/open-rdma-driver/blob/dev/docs/zh-CN/records/weekly-report/2026-05-07.md)**
