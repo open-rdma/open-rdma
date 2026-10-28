@@ -158,12 +158,8 @@ All materials publicly available with introductory guides, helping more newcomer
 The OpenRDMA-flow M0–M11 architecture: the TX front end (M0–M3), the closed TX → RX → Retx loop, and the M11 → M3 `TRAFFIC_RETRY` reinjection path.
 
 <div align="center">
-<a href="https://raw.githack.com/open-rdma/open-rdma/master/assets/architecture/openrdma-flow-architecture.html">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/architecture/openrdma-flow-architecture-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="assets/architecture/openrdma-flow-architecture-light.png" />
-    <img src="assets/architecture/openrdma-flow-architecture-dark.png" alt="OpenRDMA-flow M0–M11 system architecture" width="100%" />
-  </picture>
+<a href="https://open-rdma.github.io/open-rdma/assets/architecture/openrdma-flow-architecture.html">
+  <img src="assets/architecture/openrdma-flow-architecture-dark.png" alt="OpenRDMA-flow M0–M11 system architecture" width="100%" />
 </a>
 
 <sub>Click the figure for the interactive version: zoom, node focus, upstream/downstream path tracing, light/dark themes and export.</sub>
@@ -323,7 +319,13 @@ If Open-RDMA helps you, or you believe in open-source spirit, please give us a �
 
 **Let's build the world's leading open-source RDMA for AI project together!**
 
-<img alt="Star History Chart" src="https://raw.githubusercontent.com/jzhg6/open-rdma/star-history-assets/star.png" width="657">
+<a href="https://star-history.com/#open-rdma/open-rdma&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=open-rdma/open-rdma&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=open-rdma/open-rdma&type=Date" />
+    <img alt="Open-RDMA Star History Chart" src="https://api.star-history.com/svg?repos=open-rdma/open-rdma&type=Date" width="657" />
+  </picture>
+</a>
 
 ---
 

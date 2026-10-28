@@ -157,12 +157,8 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 OpenRDMA-flow 的 M0–M11 全景架构：TX 前端（M0–M3）、TX → RX → Retx 完整闭环，以及 M11 → M3 的 `TRAFFIC_RETRY` 回注路径。
 
 <div align="center">
-<a href="https://raw.githack.com/open-rdma/open-rdma/master/assets/architecture/openrdma-flow-architecture.html">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/architecture/openrdma-flow-architecture-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="assets/architecture/openrdma-flow-architecture-light.png" />
-    <img src="assets/architecture/openrdma-flow-architecture-dark.png" alt="OpenRDMA-flow M0–M11 系统架构" width="100%" />
-  </picture>
+<a href="https://open-rdma.github.io/open-rdma/assets/architecture/openrdma-flow-architecture.html">
+  <img src="assets/architecture/openrdma-flow-architecture-dark.png" alt="OpenRDMA-flow M0–M11 系统架构" width="100%" />
 </a>
 
 <sub>点击图片打开可交互版本：缩放、节点聚焦、上下游路径追踪、深浅主题与导出。</sub>
@@ -320,7 +316,13 @@ SSH 公钥配置、镜像源切换、本地构建镜像、代理配置、常见�
 
 **让我们共同构建出世界领先的 开源 RDMA for AI 项目！**
 
-<img alt="Star History Chart" src="https://raw.githubusercontent.com/jzhg6/open-rdma/star-history-assets/star.png" width="657">
+<a href="https://star-history.com/#open-rdma/open-rdma&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=open-rdma/open-rdma&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=open-rdma/open-rdma&type=Date" />
+    <img alt="Open-RDMA Star History Chart" src="https://api.star-history.com/svg?repos=open-rdma/open-rdma&type=Date" width="657" />
+  </picture>
+</a>
 
 ---
 
