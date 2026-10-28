@@ -13,7 +13,7 @@ English | [**简体中文**](README_CN.md)
 [![Platform](https://img.shields.io/badge/Platform-FPGA%20%7C%20Linux-orange.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
 
-<img src="https://img.shields.io/github/stars/open-rdma/open-rdma?style=social" alt="GitHub stars">
+[![GitHub stars](https://img.shields.io/github/stars/open-rdma/open-rdma?style=social)](https://github.com/open-rdma/open-rdma)
 
 ---
 ## Why This Project
@@ -26,7 +26,7 @@ Whether you are a practitioner or student in hardware (FPGA, ASIC), software inf
 
 **Break the Black Box, Master the Network** | Complete Open-Source RDMA Technology Stack from RTL to Drivers
 
-[🌟 Star Us](#-star-us) · [📖 Documentation](#) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
+[🌟 Star Us](#-star-us) · [📚 Learning Resources](#-learning-resources) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
 
 </div>
 
@@ -153,6 +153,23 @@ All materials publicly available with introductory guides, helping more newcomer
 </div>
 
 ---
+## 🏗️ System Architecture
+
+The OpenRDMA-flow M0–M11 architecture: the TX front end (M0–M3), the closed TX → RX → Retx loop, and the M11 → M3 `TRAFFIC_RETRY` reinjection path.
+
+<div align="center">
+<a href="https://raw.githack.com/open-rdma/open-rdma/master/assets/architecture/openrdma-flow-architecture.html">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/architecture/openrdma-flow-architecture-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/architecture/openrdma-flow-architecture-light.png" />
+    <img src="assets/architecture/openrdma-flow-architecture-dark.png" alt="OpenRDMA-flow M0–M11 system architecture" width="100%" />
+  </picture>
+</a>
+
+<sub>Click the figure for the interactive version: zoom, node focus, upstream/downstream path tracing, light/dark themes and export.</sub>
+</div>
+
+---
 ## 🧩 Project Matrix
 
 <table>
@@ -235,33 +252,36 @@ PCIe behavioral and simulation models based on Cocotb, we added Altera RTile sup
 
 ### One-Click Development Environment
 
-We provide a ready-to-use Docker image for new users, containing all development tools and dependencies:
+New to the project? Start with [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env):
+an out-of-the-box container that bundles the whole toolchain — the Bluespec compiler, the Rust
+toolchain, `rdma-core` and the Open-RDMA sources — and boots a QEMU virtual machine for driver work.
+
+Prerequisites: a Linux host with Docker and Docker Compose installed.
 
 ```bash
-# Pull and start the image
-docker run -it open-rdma/dev-env:latest
+# 1. Clone the development environment
+git clone https://github.com/open-rdma/open-rdma-dev-env.git
+cd open-rdma-dev-env
 
-# Or use docker-compose
-docker-compose up -d
+# 2. One-click start: builds the image and boots the VM inside the container
+./quick-start.sh
+
+# 3. Log into the VM as root:root, then run the baseline send/recv test
+cd /root/open-rdma/open-rdma-driver && ./tests/base_test/scripts/test_send_recv_sim.sh
+```
+
+`Ctrl+B, D` detaches from the VM session and leaves it running in the background. To re-attach:
+
+```bash
+docker compose exec open-rdma tmux attach-session -t open-rdma
 ```
 
 <details>
-<summary>📖 Detailed Installation Steps</summary>
+<summary>📖 Detailed installation, manual startup and troubleshooting</summary>
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/open-rdma/open-rdma.git
-cd open-rdma
-
-# 2. Install dependencies
-make deps
-
-# 3. Build
-make build
-
-# 4. Run tests
-make test
-```
+SSH key setup, switching image registries, building the image locally, proxy configuration, the FAQ
+and the image design notes all live in the
+[`open-rdma-dev-env` README](https://github.com/open-rdma/open-rdma-dev-env).
 
 </details>
 
@@ -277,7 +297,9 @@ We welcome all forms of contributions!
 - 📖 Improve documentation
 - 🔧 Submit a Pull Request
 
-See [Contributing Guide](CONTRIBUTING.md) for more details.
+See the [Contributing Guide](CONTRIBUTING.md) for the full workflow and commit conventions, and the
+[🎓 student onboarding path](CONTRIBUTING.md#-student-onboarding-path) if you are new to RDMA and
+are wondering where to start.
 
 ---
 
