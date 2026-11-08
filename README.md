@@ -247,11 +247,34 @@ PCIe behavioral and simulation models based on Cocotb, we added Altera RTile sup
 
 ## 🚀 Quick Start
 
-### One-Click Development Environment
+### Protocol & Data-Path RTL: ns-3 Offline Lab
 
-New to the project? Start with [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env):
-an out-of-the-box container that bundles the whole toolchain — the Bluespec compiler, the Rust
-toolchain, `rdma-core` and the Open-RDMA sources — and boots a QEMU virtual machine for driver work.
+Want to see OpenRDMA packets travel through a simulated network? The [OpenRDMA Offline Lab](https://github.com/open-rdma/open-rdma-driver/tree/dev/ns3/OpenRDMA-Offline) offers two starting points: standalone ns-3 experiments and an offline **TX RTL → ns-3 → RX RTL** pipeline.
+
+On Linux, install `git`, `make`, `g++`, Python 3 and CMake 3.25 or newer. The lab's Makefile currently looks for CMake at `~/.local/bin/cmake`:
+
+```bash
+git clone --branch dev https://github.com/open-rdma/open-rdma-driver.git
+cd open-rdma-driver/ns3/OpenRDMA-Offline
+
+# Install CMake here if it is not already available at ~/.local/bin/cmake.
+python3 -m pip install --user cmake==3.31.10
+
+make -C Ns3-lab build   # Download and build ns-3.48 on the first run
+make -C Ns3-lab lab1    # Run the first, standalone network experiment
+```
+
+To run the full offline pipeline, additionally install the Bluespec compiler (`bsc`), Verilator and cocotb 2, then point `COCOTB_PYTHON` to the Python interpreter containing cocotb 2:
+
+```bash
+make COCOTB_PYTHON=/path/to/cocotb2/bin/python3
+```
+
+This runs the lab's bundled M0–M3 TX RTL, sends its frames through a four-path ns-3 network, and replays the arrivals into RX RTL. For the **actively developed M0–M11 module tree and its own tests**, see [OpenRDMA-flow](https://github.com/open-rdma/open-rdma-design/tree/paper-ji/OpenRDMA-flow). The offline lab is a separate, self-contained test tree—not a test of every current OpenRDMA-flow module. Setup details and results are documented in the [Offline Lab README](https://github.com/open-rdma/open-rdma-driver/blob/dev/ns3/OpenRDMA-Offline/README.md).
+
+### Driver & QEMU Environment
+
+For kernel and user-space driver development, use [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env). It provides a container with a QEMU virtual machine and the driver development toolchain. This is a **separate driver test path**, not the ns-3 offline pipeline above.
 
 Prerequisites: a Linux host with Docker and Docker Compose installed.
 
@@ -260,27 +283,21 @@ Prerequisites: a Linux host with Docker and Docker Compose installed.
 git clone https://github.com/open-rdma/open-rdma-dev-env.git
 cd open-rdma-dev-env
 
-# 2. One-click start: builds the image and boots the VM inside the container
+# 2. Start the container and VM
 ./quick-start.sh
 
-# 3. Log into the VM as root:root, then run the baseline send/recv test
+# 3. Log into the VM as root:root and run the baseline send/recv test
 cd /root/open-rdma/open-rdma-driver && ./tests/base_test/scripts/test_send_recv_sim.sh
 ```
 
-`Ctrl+B, D` detaches from the VM session and leaves it running in the background. To re-attach:
+`Ctrl+B, D` detaches from the VM session. To re-attach:
 
 ```bash
 docker compose exec open-rdma tmux attach-session -t open-rdma
 ```
 
-<details>
-<summary>📖 Detailed installation, manual startup and troubleshooting</summary>
-
-SSH key setup, switching image registries, building the image locally, proxy configuration, the FAQ
-and the image design notes all live in the
+For SSH key setup, image registries and troubleshooting, see the
 [`open-rdma-dev-env` README](https://github.com/open-rdma/open-rdma-dev-env).
-
-</details>
 
 
 ---

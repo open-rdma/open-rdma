@@ -246,11 +246,34 @@ Bluespec SystemVerilog的Language Server，为BSV项目开发提供丝滑体验�
 
 ## 🚀 快速开始
 
-### 一键启动开发环境
+### 协议与数据通路 RTL：ns-3 离线实验
 
-第一次接触项目？请从 [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env) 开始：
-它提供了开箱即用的容器，内置完整工具链（Bluespec 编译器、Rust 工具链、`rdma-core` 以及 Open-RDMA
-源码），并在容器内启动 QEMU 虚拟机用于驱动开发。
+想看看 OpenRDMA 报文如何穿过仿真网络？[OpenRDMA 离线实验](https://github.com/open-rdma/open-rdma-driver/tree/dev/ns3/OpenRDMA-Offline)提供两个入口：独立的 ns-3 实验，以及 **TX RTL → ns-3 → RX RTL** 离线流水线。
+
+在 Linux 上准备 `git`、`make`、`g++`、Python 3 和 CMake 3.25 或更新版本。实验的 Makefile 当前从 `~/.local/bin/cmake` 查找 CMake：
+
+```bash
+git clone --branch dev https://github.com/open-rdma/open-rdma-driver.git
+cd open-rdma-driver/ns3/OpenRDMA-Offline
+
+# 如果 ~/.local/bin/cmake 尚不存在，在此安装 CMake。
+python3 -m pip install --user cmake==3.31.10
+
+make -C Ns3-lab build   # 首次下载并编译 ns-3.48
+make -C Ns3-lab lab1    # 运行第一个独立网络实验
+```
+
+要运行完整的离线流水线，还需安装 Bluespec 编译器（`bsc`）、Verilator 和 cocotb 2，并将 `COCOTB_PYTHON` 指向安装了 cocotb 2 的 Python 解释器：
+
+```bash
+make COCOTB_PYTHON=/path/to/cocotb2/bin/python3
+```
+
+此命令使用实验目录自带的 M0–M3 TX RTL 生成报文，经 ns-3 四路径网络传输，再将到达记录回灌至 RX RTL。如需查看**持续开发中的 M0–M11 模块树及其测试**，请访问 [OpenRDMA-flow](https://github.com/open-rdma/open-rdma-design/tree/paper-ji/OpenRDMA-flow)。离线实验是一套独立、自包含的测试代码，并不验证当前 OpenRDMA-flow 的所有模块。环境配置与结果说明见[离线实验 README](https://github.com/open-rdma/open-rdma-driver/blob/dev/ns3/OpenRDMA-Offline/README.md)。
+
+### 驱动与 QEMU 环境
+
+如需开发内核态和用户态驱动，请使用 [`open-rdma-dev-env`](https://github.com/open-rdma/open-rdma-dev-env)。它提供包含 QEMU 虚拟机和驱动开发工具链的容器。这是**独立的驱动测试路径**，不是上面的 ns-3 离线流水线。
 
 前置条件：一台安装了 Docker 与 Docker Compose 的 Linux 主机。
 
@@ -259,26 +282,21 @@ Bluespec SystemVerilog的Language Server，为BSV项目开发提供丝滑体验�
 git clone https://github.com/open-rdma/open-rdma-dev-env.git
 cd open-rdma-dev-env
 
-# 2. 一键启动：自动构建镜像并在容器内启动虚机
+# 2. 启动容器与虚机
 ./quick-start.sh
 
 # 3. 使用 root:root 登录虚机，运行基础双端测试
 cd /root/open-rdma/open-rdma-driver && ./tests/base_test/scripts/test_send_recv_sim.sh
 ```
 
-`Ctrl+B, D` 可退出会话并让虚机在后台继续运行。重新进入会话：
+`Ctrl+B, D` 可退出会话，稍后重新进入：
 
 ```bash
 docker compose exec open-rdma tmux attach-session -t open-rdma
 ```
 
-<details>
-<summary>📖 详细安装步骤、手动启动与常见问题</summary>
-
-SSH 公钥配置、镜像源切换、本地构建镜像、代理配置、常见问题以及镜像设计说明，请见
+SSH 公钥配置、镜像源切换和常见问题请见
 [`open-rdma-dev-env` README](https://github.com/open-rdma/open-rdma-dev-env)。
-
-</details>
 
 
 ---
