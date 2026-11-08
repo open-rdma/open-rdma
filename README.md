@@ -26,7 +26,7 @@ Whether you are a practitioner or student in hardware (FPGA, ASIC), software inf
 
 **Break the Black Box, Master the Network** | Complete Open-Source RDMA Technology Stack from RTL to Drivers
 
-[🌟 Star Us](#-star-us) · [📚 Learning Resources](#-learning-resources) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
+[🌟 Star Us](#-star-us) · [🌐 Official Website](https://open-rdma.github.io/open-rdma/) · [📚 Learning Resources](#-learning-resources) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
 
 </div>
 
@@ -73,6 +73,7 @@ OpenRDMA is a GPU-friendly RDMA design: the GPU submits only a short instruction
 
 <div>
 
+* **[2026-11-06] [OpenRDMA Paper Published](https://arxiv.org/abs/2611.07559)**
 * **[2026-10-23] [Hardware-Software Co-Designed Retransmission Development Completed](https://github.com/open-rdma/open-rdma-rtl)**
 * **[2026-10-23] [ns-3 Based Project Lab Guide Released](https://github.com/open-rdma/open-rdma-driver/tree/dev/ns3/OpenRDMA-Offline)**
 * **[2026-10-08] Protocol Receive Architecture Development Completed**

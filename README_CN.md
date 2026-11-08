@@ -26,7 +26,7 @@
 
 **打破黑盒，掌控网络** | 从 RTL 到驱动的完整开源 RDMA 技术栈
 
-[🌟 给个 Star](#-给个-star) · [📚 学习资源](#-相关领域学习资源) · [🚀 快速开始](#-快速开始) · [🤝 参与贡献](#-参与贡献)
+[🌟 给个 Star](#-给个-star) · [🌐 项目官网](https://open-rdma.github.io/open-rdma/) · [📚 学习资源](#-相关领域学习资源) · [🚀 快速开始](#-快速开始) · [🤝 参与贡献](#-参与贡献)
 
 </div>
 
@@ -72,6 +72,7 @@ OpenRDMA 是一种 GPU-friendly 的 RDMA 设计：GPU 只提交一条简短指�
 
 <div>
 
+* **[2026-11-06] [OpenRDMA 论文已发布](https://arxiv.org/abs/2611.07559)**
 * **[2026-10-23] [软硬件协同重传开发完成](https://github.com/open-rdma/open-rdma-rtl)**
 * **[2026-10-23] [基于 ns-3 的项目实验指南上线](https://github.com/open-rdma/open-rdma-driver/tree/dev/ns3/OpenRDMA-Offline)**
 * **[2026-10-08] 协议接收架构开发完成**
