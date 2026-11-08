@@ -26,7 +26,7 @@ Whether you are a practitioner or student in hardware (FPGA, ASIC), software inf
 
 **Break the Black Box, Master the Network** | Complete Open-Source RDMA Technology Stack from RTL to Drivers
 
-[🌟 Star Us](#-star-us) · [🌐 Official Website](https://open-rdma.github.io/open-rdma/) · [📚 Learning Resources](#-learning-resources) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
+[🌟 Star Us](#-star-us) · [📄 Paper](https://arxiv.org/abs/2611.07559) · [🌐 Official Website](https://open-rdma.github.io/open-rdma/) · [📚 Learning Resources](#-learning-resources) · [🚀 Quick Start](#-quick-start) · [🤝 Contributing](#-contributing)
 
 </div>
 
