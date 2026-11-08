@@ -306,10 +306,10 @@ For SSH key setup, image registries and troubleshooting, see the
 
 We welcome all forms of contributions!
 
-- 🐛 [Report a Bug](../../issues/new?template=bug_report.md)
-- 💡 [Request a Feature](../../issues/new?template=feature_request.md)
+- 🐛 [Report a Bug](https://github.com/open-rdma/open-rdma/issues/new?template=bug_report.md)
+- 💡 [Request a Feature](https://github.com/open-rdma/open-rdma/issues/new?template=feature_request.md)
 - 📖 Improve documentation
-- 🔧 Submit a Pull Request
+- 🔧 [Submit a Pull Request](https://github.com/open-rdma/open-rdma/compare)
 
 See the [Contributing Guide](CONTRIBUTING.md) for the full workflow and commit conventions, and the
 [🎓 student onboarding path](CONTRIBUTING.md#-student-onboarding-path) if you are new to RDMA and
@@ -319,7 +319,7 @@ are wondering where to start.
 
 ## 👥 Community
 
-- 💬 [GitHub Discussions](../../discussions) - Questions and discussions
+- 💬 [GitHub Discussions](https://github.com/open-rdma/open-rdma/discussions) - Questions and discussions
 
 ---
 

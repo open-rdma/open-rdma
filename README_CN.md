@@ -305,10 +305,10 @@ SSH 公钥配置、镜像源切换和常见问题请见
 
 我们欢迎所有形式的贡献！
 
-- 🐛 [报告 Bug](../../issues/new?template=bug_report.md)
-- 💡 [提出新功能](../../issues/new?template=feature_request.md)
+- 🐛 [报告 Bug](https://github.com/open-rdma/open-rdma/issues/new?template=bug_report.md)
+- 💡 [提出新功能](https://github.com/open-rdma/open-rdma/issues/new?template=feature_request.md)
 - 📖 改进文档
-- 🔧 提交 Pull Request
+- 🔧 [提交 Pull Request](https://github.com/open-rdma/open-rdma/compare)
 
 完整的贡献流程与提交信息规范请见 [贡献指南](CONTRIBUTING_CN.md)；如果你是刚接触 RDMA、
 不知道从哪里入手的同学，请直接看 [🎓 学生上手路径](CONTRIBUTING_CN.md#-学生上手路径)。
@@ -317,7 +317,7 @@ SSH 公钥配置、镜像源切换和常见问题请见
 
 ## 👥 社区
 
-- 💬 [GitHub Discussions](../../discussions) - 问题和讨论
+- 💬 [GitHub Discussions](https://github.com/open-rdma/open-rdma/discussions) - 问题和讨论
 
 ---
 
