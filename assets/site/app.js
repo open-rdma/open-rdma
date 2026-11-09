@@ -26,7 +26,10 @@
       pause: '暂停演示',
       play: '继续演示',
       setup: '复制启动命令',
-      verify: '复制验证命令'
+      verify: '复制验证命令',
+      ns3: '复制 ns-3 实验命令',
+      pipeline: '复制离线流水线命令',
+      qrAlt: 'DatenLord_Tech 微信小助手二维码'
     },
     en: {
       title: 'Open-RDMA | Open Network, Open Future',
@@ -37,7 +40,10 @@
       pause: 'Pause animation',
       play: 'Play animation',
       setup: 'Copy setup commands',
-      verify: 'Copy verification commands'
+      verify: 'Copy verification commands',
+      ns3: 'Copy ns-3 lab commands',
+      pipeline: 'Copy offline pipeline command',
+      qrAlt: 'QR code for the DatenLord_Tech WeChat assistant'
     }
   };
 
@@ -91,11 +97,15 @@
     document.querySelector('meta[name="description"]')?.setAttribute('content', text.description);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', text.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', text.description);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', text.title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', text.description);
     themeButton?.setAttribute('aria-label', text.theme);
     menuButton?.setAttribute('aria-label', menuButton.getAttribute('aria-expanded') === 'true' ? text.menuClose : text.menuOpen);
     demoButton?.setAttribute('aria-label', demoButton.getAttribute('aria-pressed') === 'true' ? text.play : text.pause);
     document.querySelector('[data-copy-target="#setup-code"]')?.setAttribute('aria-label', text.setup);
     document.querySelector('[data-copy-target="#verify-code"]')?.setAttribute('aria-label', text.verify);
+    document.querySelector('[data-copy-target="#ns3-code"]')?.setAttribute('aria-label', text.ns3);
+    document.querySelector('[data-copy-target="#ns3-pipeline-code"]')?.setAttribute('aria-label', text.pipeline);
   }
 
   function applyLanguage(language, persist = false) {
@@ -107,6 +117,11 @@
     document.querySelectorAll('[data-contribution-link]').forEach((link) => {
       link.href = `https://github.com/open-rdma/open-rdma/blob/master/CONTRIBUTING${normalized === 'zh' ? '_CN' : ''}.md`;
     });
+    document.querySelectorAll('[data-readme-link]').forEach((link) => {
+      link.href = `https://github.com/open-rdma/open-rdma/blob/master/README${normalized === 'zh' ? '_CN' : ''}.md`;
+    });
+    const qrImage = document.querySelector('[data-wechat-image]');
+    if (qrImage) qrImage.alt = copy[normalized].qrAlt;
     updateLocalizedMetadata(normalized);
     if (persist) storage.set('openrdma-language', normalized);
   }
@@ -263,8 +278,35 @@
     render();
   }
 
+  function initializeWechatContact() {
+    const contact = document.querySelector('[data-wechat-contact]');
+    const trigger = contact?.querySelector('[data-wechat-trigger]');
+    if (!contact || !trigger) return () => {};
+
+    root.classList.add('has-contact-js');
+    function setOpen(open) {
+      contact.classList.toggle('is-open', open);
+      trigger.setAttribute('aria-expanded', String(open));
+    }
+
+    contact.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'mouse') setOpen(true);
+    });
+    contact.addEventListener('pointerleave', (event) => {
+      if (event.pointerType === 'mouse') setOpen(false);
+    });
+    trigger.addEventListener('focus', () => setOpen(true));
+    trigger.addEventListener('blur', () => setOpen(false));
+    trigger.addEventListener('click', () => setOpen(true));
+    document.addEventListener('pointerdown', (event) => {
+      if (!contact.contains(event.target)) setOpen(false);
+    });
+    return () => setOpen(false);
+  }
+
   applyTheme(resolvedTheme());
-  applyLanguage(storage.get('openrdma-language') === 'en' ? 'en' : 'zh');
+  applyLanguage(storage.get('openrdma-language') === 'zh' ? 'zh' : 'en');
+  const closeWechatContact = initializeWechatContact();
 
   themeButton?.addEventListener('click', () => {
     applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
@@ -283,7 +325,10 @@
     updateScrollState();
   });
   window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
+    if (event.key === 'Escape') {
+      closeMenu();
+      closeWechatContact();
+    }
   });
   window.addEventListener('scroll', updateScrollState, { passive: true });
   updateScrollState();
