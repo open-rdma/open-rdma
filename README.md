@@ -171,7 +171,16 @@ The OpenRDMA-flow M0–M11 architecture: the TX front end (M0–M3), the closed 
 
 <table>
 <tr>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
+
+### [open-rdma-operation-manual](./open-rdma-operation-manual/)
+
+[![GitHub stars](https://img.shields.io/github/stars/jzhg6/open-rdma?style=social)](https://github.com/jzhg6/open-rdma)
+
+The introductory operation manual for the open-rdma project.
+
+</td>
+<td width="25%" align="center" valign="top">
 
 ### [open-rdma-rtl](https://github.com/open-rdma/open-rdma-rtl)
 
@@ -180,7 +189,7 @@ The OpenRDMA-flow M0–M11 architecture: the TX front end (M0–M3), the closed 
 Hardware RTL code for the open-rdma project
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [open-rdma-driver](https://github.com/open-rdma/open-rdma-driver)
 
@@ -189,7 +198,7 @@ Hardware RTL code for the open-rdma project
 Driver code including user-space and kernel-space drivers
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [open-rdma-dev-env](https://github.com/open-rdma/open-rdma-dev-env)
 
@@ -200,7 +209,7 @@ Setting up an environment from hardware simulation to software driver debugging 
 </td>
 </tr>
 <tr>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [bluespec-lsp](https://github.com/open-rdma/bluespec-lsp)
 
@@ -209,7 +218,7 @@ Setting up an environment from hardware simulation to software driver debugging 
 Language Server for Bluespec SystemVerilog, providing a smooth development experience for BSV projects.
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [UCAgent (Fork)](https://github.com/open-rdma/UCAgent)
 
@@ -218,7 +227,7 @@ Language Server for Bluespec SystemVerilog, providing a smooth development exper
 An AI Agent-driven RTL verification framework launched by Beijing Institute of Open Source Chip, we added support for Cocotb test environment.
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="25%" align="center" valign="top">
 
 ### [cocotbext-pcie (Fork)](https://github.com/open-rdma/cocotbext-pcie)
 
