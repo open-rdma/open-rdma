@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1b">
+  <meta name="description" content="Open-RDMA is a full-stack open-source RDMA hardware and software project for AI infrastructure.">
+  <meta name="keywords" content="Open-RDMA,RDMA,FPGA,Bluespec,MRC,AI Infrastructure,GPUDirect">
+  <meta name="author" content="Open-RDMA Community">
+  <meta property="og:title" content="Open-RDMA | Open Network, Open Future">
+  <meta property="og:description" content="Open-RDMA is a full-stack open-source RDMA hardware and software project for AI infrastructure.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://open-rdma.github.io/open-rdma/">
+  <meta property="og:image" content="https://open-rdma.github.io/open-rdma/assets/architecture/openrdma-flow-architecture-dark.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Open-RDMA | Open Network, Open Future">
+  <meta name="twitter:description" content="A full-stack open-source RDMA hardware and software project for AI infrastructure.">
+  <meta name="twitter:image" content="https://open-rdma.github.io/open-rdma/assets/architecture/openrdma-flow-architecture-dark.png">
+  <link rel="canonical" href="https://open-rdma.github.io/open-rdma/">
+  <link rel="icon" type="image/svg+xml" href="assets/site/favicon.svg">
+  <link rel="stylesheet" href="assets/site/styles.css">
+  <title>Open-RDMA | Open Network, Open Future</title>
+  <script>
+    (() => {
+      let theme;
+      let language;
+      try {
+        theme = localStorage.getItem('openrdma-theme');
+        language = localStorage.getItem('openrdma-language');
+      } catch {
+        // The site still works when browser storage is unavailable.
+      }
+      const root = document.documentElement;
+      const resolved = theme === 'dark' || theme === 'light'
+        ? theme
+        : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      root.dataset.theme = resolved;
+      root.style.colorScheme = resolved;
+      if (language === 'zh') {
+        root.dataset.lang = 'zh';
+        root.lang = 'zh-CN';
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content"><span class="i18n i18n-zh">跳到正文</span><span class="i18n i18n-en">Skip to content</span></a>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-github" viewBox="0 0 256 256"><path fill="currentColor" d="M208.31 75.68A59.78 59.78 0 0 0 202.93 28a8 8 0 0 0-6.93-4 59.75 59.75 0 0 0-48 24h-24a59.75 59.75 0 0 0-48-24 8 8 0 0 0-6.93 4 59.78 59.78 0 0 0-5.38 47.68A58.14 58.14 0 0 0 56 104v8a56.06 56.06 0 0 0 48.44 55.47A39.8 39.8 0 0 0 96 192v8H72a24 24 0 0 1-24-24 40 40 0 0 0-40-40 8 8 0 0 0 0 16 24 24 0 0 1 24 24 40 40 0 0 0 40 40h24v16a8 8 0 0 0 16 0v-40a24 24 0 0 1 48 0v40a8 8 0 0 0 16 0v-40a39.8 39.8 0 0 0-8.44-24.53A56.06 56.06 0 0 0 216 112v-8a58.14 58.14 0 0 0-7.69-28.32M200 112a40 40 0 0 1-40 40h-48a40 40 0 0 1-40-40v-8a41.74 41.74 0 0 1 6.9-22.48 8 8 0 0 0 1.1-7.69 43.8 43.8 0 0 1 .79-33.58 43.88 43.88 0 0 1 32.32 20.06 8 8 0 0 0 6.71 3.69h32.35a8 8 0 0 0 6.74-3.69 43.87 43.87 0 0 1 32.32-20.06 43.8 43.8 0 0 1 .77 33.58 8.09 8.09 0 0 0 1 7.65 41.7 41.7 0 0 1 7 22.52Z"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.2 15.2A8.6 8.6 0 0 1 8.8 3.8a8.6 8.6 0 1 0 11.4 11.4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M18 13v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z" fill="currentColor"/></symbol>
+  </svg>
+
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header" data-header>
+    <div class="header-inner container">
+      <a class="brand" href="#top" aria-label="Open-RDMA home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Open-RDMA</span><span class="brand-divider" aria-hidden="true"></span><span class="brand-note">OPEN NETWORK</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#why"><span class="i18n i18n-zh">设计理念</span><span class="i18n i18n-en">The idea</span></a>
+        <a href="#architecture"><span class="i18n i18n-zh">系统架构</span><span class="i18n i18n-en">Architecture</span></a>
+        <a href="#ecosystem"><span class="i18n i18n-zh">项目生态</span><span class="i18n i18n-en">Ecosystem</span></a>
+        <a href="#news"><span class="i18n i18n-zh">近期事件</span><span class="i18n i18n-en">News</span></a>
+        <a href="#start"><span class="i18n i18n-zh">快速开始</span><span class="i18n i18n-en">Get started</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button language-toggle" type="button" data-language-toggle aria-label="切换到简体中文"><span data-language-label>中</span></button>
+        <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme"><svg class="theme-icon theme-icon-sun" aria-hidden="true"><use href="#icon-sun"/></svg><svg class="theme-icon theme-icon-moon" aria-hidden="true"><use href="#icon-moon"/></svg></button>
+        <a class="header-github" aria-label="GitHub" href="https://github.com/open-rdma/open-rdma" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-github"/></svg><span>GitHub</span></a>
+        <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><svg class="menu-open-icon" aria-hidden="true"><use href="#icon-menu"/></svg><svg class="menu-close-icon" aria-hidden="true"><use href="#icon-close"/></svg></button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-menu" data-mobile-nav aria-label="Mobile navigation">
+      <a href="#why"><span class="i18n i18n-zh">设计理念</span><span class="i18n i18n-en">The idea</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a href="#architecture"><span class="i18n i18n-zh">系统架构</span><span class="i18n i18n-en">Architecture</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a href="#ecosystem"><span class="i18n i18n-zh">项目生态</span><span class="i18n i18n-en">Ecosystem</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a href="#start"><span class="i18n i18n-zh">快速开始</span><span class="i18n i18n-en">Get started</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a href="#news"><span class="i18n i18n-zh">近期事件</span><span class="i18n i18n-en">News</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a href="#community"><span class="i18n i18n-zh">加入社区</span><span class="i18n i18n-en">Community</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-lightfield" aria-hidden="true"></div>
+      <div class="hero-lines" aria-hidden="true"></div>
+      <div class="hero-content container">
+        <div class="hero-intro">
+          <p class="hero-badge"><span class="badge-spark" aria-hidden="true">✳</span><span class="i18n i18n-zh">为 AI 基础设施而开源</span><span class="i18n i18n-en">OPEN SOURCE FOR AI INFRASTRUCTURE</span><span class="badge-rule" aria-hidden="true"></span>OPEN-RDMA</p>
+          <h1 id="hero-title"><span class="i18n i18n-zh">开放网络<br><em>开放未来</em></span><span class="i18n i18n-en">Open Network.<br><em>Open Future.</em></span></h1>
+          <div class="hero-lead">
+            <p class="i18n i18n-zh">从 RTL 到驱动，构建面向 AI 计算的全栈开源 RDMA 技术栈。</p>
+            <p class="i18n i18n-en">A full-stack open-source RDMA hardware and software project for AI infrastructure.</p>
+            <p class="i18n i18n-zh">让每一条数据路径都清晰可见，让每一层设计都能被重新定义。</p>
+            <p class="i18n i18n-en">Make every data path visible. Make every layer open to reinvention.</p>
+          </div>
+          <div class="hero-actions-row">
+            <a class="button button-primary" href="#why"><span class="i18n i18n-zh">探索 Open-RDMA</span><span class="i18n i18n-en">Explore Open-RDMA</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            <a class="button button-ghost" href="https://github.com/open-rdma/open-rdma" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-github"/></svg><span><span class="i18n i18n-zh">查看开源项目</span><span class="i18n i18n-en">View the source</span></span></a>
+          </div>
+          <a class="paper-teaser" href="https://arxiv.org/abs/2611.07559" target="_blank" rel="noopener noreferrer"><span class="paper-teaser-date">2026.11.06</span><span class="i18n i18n-zh">OpenRDMA 论文已发布 · 阅读论文</span><span class="i18n i18n-en">The OpenRDMA paper is published · Read on arXiv</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+        </div>
+
+        <div class="showcase-shell" data-demo aria-label="OpenRDMA transmission path concept illustration">
+          <div class="showcase-topbar"><div class="window-controls" aria-hidden="true"><i></i><i></i><i></i></div><span class="showcase-file">openrdma / transport-flow</span><div class="topbar-right"><span class="topbar-indicator" aria-hidden="true"></span><span>ARCHITECTURE PREVIEW</span></div></div>
+          <div class="showcase-body">
+            <aside class="showcase-sidebar" aria-hidden="true">
+              <div class="sidebar-brand"><span class="sidebar-mark">◈</span> OpenRDMA<span class="sidebar-brand-sub">FLOW</span></div>
+              <p>DATA PATH</p>
+              <div class="sidebar-link active"><span class="sidebar-glyph">◇</span> Overview <span class="sidebar-counter">01</span></div>
+              <div class="sidebar-link"><span class="sidebar-glyph">→</span> Transmit <span class="sidebar-counter">M0–M3</span></div>
+              <div class="sidebar-link"><span class="sidebar-glyph">←</span> Receive <span class="sidebar-counter">M4–M8</span></div>
+              <div class="sidebar-link"><span class="sidebar-glyph">↺</span> Retry <span class="sidebar-counter">M9–M11</span></div>
+              <div class="sidebar-bottom"><span class="sidebar-status"></span> Open hardware · Open software</div>
+            </aside>
+            <div class="showcase-main">
+              <div class="showcase-heading"><div><span class="screen-overline">TRANSPORT / OVERVIEW</span><h2><span class="i18n i18n-zh">一条指令，贯通整个网络。</span><span class="i18n i18n-en">One instruction. A whole network.</span></h2><p><span class="i18n i18n-zh">从 GPU 提交到多路径传输的开放架构示意</span><span class="i18n i18n-en">An open architecture from GPU submission to multipath transport</span></p></div><span class="screen-version">M0 — M11</span></div>
+              <div class="flow-panel">
+                <div class="flow-grid" aria-hidden="true"></div>
+                <div class="flow-step"><span class="flow-step-id">01 / ORIGIN</span><span class="flow-step-icon icon-gpu" aria-hidden="true">▦</span><strong>GPU</strong><small>Kernel</small></div>
+                <div class="flow-connector" aria-hidden="true"><i></i></div>
+                <div class="flow-step"><span class="flow-step-id">02 / SUBMIT</span><span class="flow-step-icon icon-doorbell" aria-hidden="true">8</span><strong>Doorbell</strong><small>8-byte</small></div>
+                <div class="flow-connector" aria-hidden="true"><i></i></div>
+                <div class="flow-step flow-step-primary"><span class="flow-step-id">03 / BUILD</span><span class="flow-step-icon icon-nic" aria-hidden="true">◈</span><strong>OpenRDMA</strong><small>NIC · WQE</small></div>
+                <div class="flow-connector" aria-hidden="true"><i></i></div>
+                <div class="flow-step"><span class="flow-step-id">04 / TRANSPORT</span><span class="flow-step-icon icon-mrc" aria-hidden="true">≋</span><strong>MRC</strong><small>Multipath</small></div>
+                <div class="flow-connector" aria-hidden="true"><i></i></div>
+                <div class="flow-step"><span class="flow-step-id">05 / COMPLETE</span><span class="flow-step-icon icon-rx" aria-hidden="true">↙</span><strong>RX</strong><small>Place · Retire</small></div>
+              </div>
+              <div class="replay-track"><span class="replay-icon" aria-hidden="true">↺</span><div><strong>RETRY / REPLAY</strong><span><span class="i18n i18n-zh">丢包反馈 → 状态管理 → 数据回放 → TX 回注</span><span class="i18n i18n-en">Loss feedback → State → Replay → TX reinjection</span></span></div><span class="replay-modules">M9 / M10 / M11</span></div>
+              <div class="showcase-footer"><span class="concept-label"><span class="i18n i18n-zh">架构概念演示 · 非实机界面</span><span class="i18n i18n-en">Architecture concept · Not a live product UI</span></span><button type="button" class="demo-toggle" data-demo-toggle aria-label="暂停演示" aria-pressed="false"><svg class="demo-icon-pause" aria-hidden="true"><use href="#icon-pause"/></svg><svg class="demo-icon-play" aria-hidden="true"><use href="#icon-play"/></svg><span class="i18n i18n-zh"><span data-demo-state-zh>暂停演示</span></span><span class="i18n i18n-en"><span data-demo-state-en>Pause animation</span></span></button></div>
+            </div>
+          </div>
+        </div>
+        <p class="hero-afterword"><span class="afterword-line" aria-hidden="true"></span><span class="i18n i18n-zh">为研究者、学生与开源构建者而设计</span><span class="i18n i18n-en">For researchers, students, and open-source builders</span><span class="afterword-line" aria-hidden="true"></span></p>
+      </div>
+    </section>
+
+    <section class="section capabilities" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-heading centered reveal"><span class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span><span class="i18n i18n-zh">重新思考 RDMA</span><span class="i18n i18n-en">RETHINKING RDMA</span></span><h2 id="why-title"><span class="i18n i18n-zh">让开放，贯穿每一次通信。</span><span class="i18n i18n-en">Open at every layer of communication.</span></h2><p><span class="i18n i18n-zh">以 GPU-friendly 提交、可靠多路径和全栈开源为起点，把硬件与软件的设计权交还给开发者。</span><span class="i18n i18n-en">GPU-friendly submission, reliable multipath, and an open stack put hardware and software back in the hands of builders.</span></p></div>
+        <div class="capability-grid">
+          <article class="capability-card card-submission reveal"><div class="card-copy"><span class="card-index">01 / GPU-FRIENDLY</span><h3><span class="i18n i18n-zh">让 GPU 专注计算，<br>让 NIC 构建请求。</span><span class="i18n i18n-en">Let the GPU compute.<br>Let the NIC build.</span></h3><p><span class="i18n i18n-zh">GDR 依赖 CPU 构建请求，IBGDA 将工作交给 GPU。OpenRDMA 则让 GPU 只发送一条 8-byte Doorbell，由 NIC 完成后续解析与请求构建。</span><span class="i18n i18n-en">GDR builds on the CPU; IBGDA moves the work to the GPU. OpenRDMA lets the GPU submit an 8-byte Doorbell while the NIC builds the request.</span></p></div><a class="comparison-art" href="assets/openrdma-control-path-comparison.svg" target="_blank" rel="noopener noreferrer" aria-label="Open the GDR, IBGDA and OpenRDMA control-path comparison"><img src="assets/openrdma-control-path-comparison.svg" alt="GDR, IBGDA and OpenRDMA control-path comparison" width="1241" height="471" loading="lazy"><span><span class="i18n i18n-zh">查看控制路径对比</span><span class="i18n i18n-en">Explore the control paths</span><svg aria-hidden="true"><use href="#icon-external"/></svg></span></a></article>
+          <article class="capability-card card-multipath reveal" data-delay="1"><div class="card-copy"><span class="card-index">02 / MULTIPATH RELIABILITY</span><h3><span class="i18n i18n-zh">把可靠性，<br>铺向更多路径。</span><span class="i18n i18n-en">Reliability across<br>more paths.</span></h3><p><span class="i18n i18n-zh">借鉴 MRC 的多路径、乱序处理与丢包恢复机制，探索面向 AI 集群的开放 Ethernet 传输设计。</span><span class="i18n i18n-en">Drawing on MRC for multipath, out-of-order handling, and loss recovery in open Ethernet transport for AI clusters.</span></p></div><div class="route-visual" aria-label="Four paths between a source and destination"><div class="route-source">QP<span>TX</span></div><div class="route-lines" aria-hidden="true"><span class="route-line"><i></i></span><span class="route-line"><i></i></span><span class="route-line"><i></i></span><span class="route-line"><i></i></span></div><div class="route-target">QP<span>RX</span></div></div><div class="route-labels"><span>PATH 00</span><span>PATH 01</span><span>PATH 02</span><span>PATH 03</span></div></article>
+          <article class="capability-card card-open reveal"><div class="card-copy"><span class="card-index">03 / FULL-STACK OPEN SOURCE</span><h3><span class="i18n i18n-zh">从 RTL 到驱动，<br>不再是一只黑盒。</span><span class="i18n i18n-en">From RTL to drivers.<br>Nothing hidden.</span></h3><p><span class="i18n i18n-zh">Bluespec RTL、Linux 驱动、开发环境与验证工具相互连接。科研、教学和工程实践都可以从真实代码开始。</span><span class="i18n i18n-en">Bluespec RTL, Linux drivers, a development environment, and verification tools connect research, education, and real engineering.</span></p></div><div class="stack-visual" aria-hidden="true"><div><span>01</span><strong>GPU / APPLICATION</strong><i>CUDA</i></div><div><span>02</span><strong>USER &amp; KERNEL DRIVER</strong><i>RUST · C</i></div><div><span>03</span><strong>RNIC TRANSPORT</strong><i>BLUESPEC</i></div><div><span>04</span><strong>ETHERNET FABRIC</strong><i>MRC</i></div></div></article>
+          <article class="capability-card card-builders reveal" data-delay="1"><div class="card-copy"><span class="card-index">04 / BUILD TOGETHER</span><h3><span class="i18n i18n-zh">可理解、可修改，<br>也可一起创造。</span><span class="i18n i18n-en">Understand it.<br>Change it. Build together.</span></h3><p><span class="i18n i18n-zh">从协议探索到 RTL 验证，从驱动调试到开发工具，不同背景都能找到自己的一条贡献路径。</span><span class="i18n i18n-en">From protocol research and RTL verification to driver debugging and developer tooling, there is a path for every contributor.</span></p><a class="inline-link" data-contribution-link href="https://github.com/open-rdma/open-rdma/blob/master/CONTRIBUTING_CN.md" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">阅读贡献指南</span><span class="i18n i18n-en">Read the contribution guide</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a></div><div class="builder-trails" aria-hidden="true"><span>RTL<span>◈</span></span><span>DRIVER<span>◈</span></span><span>VERIFY<span>◈</span></span><span>AI / GPU<span>◈</span></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section architecture-section" id="architecture" aria-labelledby="architecture-title"><div class="container"><div class="section-heading split reveal"><div><span class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span><span class="i18n i18n-zh">系统全景</span><span class="i18n i18n-en">SYSTEM OVERVIEW</span></span><h2 id="architecture-title"><span class="i18n i18n-zh">看得见的协议，<br>走得通的闭环。</span><span class="i18n i18n-en">A visible protocol.<br>A connected loop.</span></h2></div><p><span class="i18n i18n-zh">OpenRDMA-flow 的 M0–M11 覆盖 TX、RX 与 Retx：从 Doorbell 解析到数据放置，从反馈决策到重传回注。点击架构图追踪每条路径。</span><span class="i18n i18n-en">OpenRDMA-flow M0–M11 spans TX, RX, and Retx: Doorbell parsing, data placement, feedback, and retry reinjection. Explore every path in the interactive view.</span></p></div><div class="architecture-showcase reveal"><div class="architecture-description"><div class="arch-topline">OPENRDMA-FLOW / M0—M11 <span class="arch-topline-dot"></span> TX → RX → RETX</div><div class="arch-modules"><div><span>01</span><strong>TX FRONT END</strong><small>M0–M3</small><p><span class="i18n i18n-zh">Doorbell、DMA、组包与调度</span><span class="i18n i18n-en">Doorbell, DMA, assembly, scheduling</span></p></div><div><span>02</span><strong>RX PIPELINE</strong><small>M4–M8</small><p><span class="i18n i18n-zh">缓存、解析、bitmap 与有序完成</span><span class="i18n i18n-en">Buffering, parsing, bitmap, ordered completion</span></p></div><div><span>03</span><strong>RETRY LOOP</strong><small>M9–M11</small><p><span class="i18n i18n-zh">状态管理、报告与 replay 回注</span><span class="i18n i18n-en">State, reporting, replay reinjection</span></p></div></div><a class="button button-dark" href="assets/architecture/openrdma-flow-architecture.html" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">探索交互架构图</span><span class="i18n i18n-en">Explore the architecture</span><svg aria-hidden="true"><use href="#icon-external"/></svg></a></div><a class="architecture-preview" href="assets/architecture/openrdma-flow-architecture.html" target="_blank" rel="noopener noreferrer" aria-label="Open the interactive OpenRDMA-flow M0 to M11 architecture"><span class="preview-topbar">SYSTEM / TRANSPORT FLOW <span>OPEN IN NEW TAB ↗</span></span><img data-architecture-image data-light-src="assets/architecture/openrdma-flow-architecture-light.png" data-dark-src="assets/architecture/openrdma-flow-architecture-dark.png" src="assets/architecture/openrdma-flow-architecture-light.png" alt="OpenRDMA-flow architecture linking TX M0–M3, RX M4–M8 and Retx M9–M11" width="2048" height="2090" loading="lazy"><span class="preview-bottom"><span class="i18n i18n-zh">完整图可缩放、追踪路径和切换主题</span><span class="i18n i18n-en">Zoom, trace paths, and switch themes in the full view</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></span></a></div></div></section>
+
+    <section class="section ecosystem-section" id="ecosystem" aria-labelledby="ecosystem-title"><div class="container"><div class="section-heading centered reveal"><span class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span><span class="i18n i18n-zh">开放生态</span><span class="i18n i18n-en">OPEN ECOSYSTEM</span></span><h2 id="ecosystem-title"><span class="i18n i18n-zh">不是单个项目，<br>是一套完整的可能。</span><span class="i18n i18n-en">More than a project.<br>An entire open stack.</span></h2><p><span class="i18n i18n-zh">六个协作仓库，从底层硬件延伸至开发体验，共同构成 Open-RDMA 的技术版图。</span><span class="i18n i18n-en">Six connected repositories span hardware, software, tooling, and developer experience.</span></p></div><div class="ecosystem-grid">
+      <a class="ecosystem-card ecosystem-feature reveal" href="https://github.com/open-rdma/open-rdma-rtl" target="_blank" rel="noopener noreferrer"><span class="ecosystem-kicker">01 / HARDWARE</span><span class="ecosystem-icon" aria-hidden="true">▦</span><div><h3>open-rdma-rtl</h3><p><span class="i18n i18n-zh">Bluespec SystemVerilog 编写的硬件 RTL，覆盖 RNIC 设计、仿真与验证。</span><span class="i18n i18n-en">Hardware RTL in Bluespec SystemVerilog for RNIC design, simulation, and verification.</span></p></div><span class="ecosystem-foot">BLUESPEC · FPGA <svg aria-hidden="true"><use href="#icon-arrow"/></svg></span></a>
+      <a class="ecosystem-card ecosystem-feature reveal" data-delay="1" href="https://github.com/open-rdma/open-rdma-driver" target="_blank" rel="noopener noreferrer"><span class="ecosystem-kicker">02 / SOFTWARE</span><span class="ecosystem-icon" aria-hidden="true">⌘</span><div><h3>open-rdma-driver</h3><p><span class="i18n i18n-zh">内核态 C 驱动、用户态 Rust 驱动，以及与 rdma-core 的对接。</span><span class="i18n i18n-en">Kernel C and user-space Rust drivers, with rdma-core integration.</span></p></div><span class="ecosystem-foot">C · RUST · LINUX <svg aria-hidden="true"><use href="#icon-arrow"/></svg></span></a>
+      <a class="ecosystem-card reveal" href="https://github.com/open-rdma/open-rdma-dev-env" target="_blank" rel="noopener noreferrer"><span class="ecosystem-kicker">03 / ENVIRONMENT</span><div><h3>open-rdma-dev-env</h3><p><span class="i18n i18n-zh">Docker + QEMU 开发环境</span><span class="i18n i18n-en">Docker + QEMU development environment</span></p></div><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a class="ecosystem-card reveal" data-delay="1" href="https://github.com/open-rdma/bluespec-lsp" target="_blank" rel="noopener noreferrer"><span class="ecosystem-kicker">04 / TOOLING</span><div><h3>bluespec-lsp</h3><p><span class="i18n i18n-zh">Bluespec 的 Language Server</span><span class="i18n i18n-en">Language Server for Bluespec</span></p></div><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a class="ecosystem-card reveal" data-delay="2" href="https://github.com/open-rdma/UCAgent" target="_blank" rel="noopener noreferrer"><span class="ecosystem-kicker">05 / VERIFICATION</span><div><h3>UCAgent</h3><p><span class="i18n i18n-zh">AI Agent 驱动的 RTL 验证</span><span class="i18n i18n-en">AI-agent-driven RTL verification</span></p></div><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <a class="ecosystem-card reveal" data-delay="3" href="https://github.com/open-rdma/cocotbext-pcie" target="_blank" rel="noopener noreferrer"><span class="ecosystem-kicker">06 / SIMULATION</span><div><h3>cocotbext-pcie</h3><p><span class="i18n i18n-zh">支持 Intel R-Tile 的 PCIe 仿真模型</span><span class="i18n i18n-en">PCIe simulation with Intel R-Tile support</span></p></div><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+    </div></div></section>
+
+    <section class="section start-section" id="start" aria-labelledby="start-title">
+      <div class="container">
+        <div class="section-heading split reveal">
+          <div><span class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span><span class="i18n i18n-zh">开发者体验</span><span class="i18n i18n-en">DEVELOPER EXPERIENCE</span></span><h2 id="start-title"><span class="i18n i18n-zh">选择你的入口，<br>从真实实验开始。</span><span class="i18n i18n-en">Choose a path.<br>Start building.</span></h2></div>
+          <p><span class="i18n i18n-zh">探索协议与数据通路，或进入驱动与 QEMU 环境。这是两条独立的实践路径，按你的兴趣选择即可。</span><span class="i18n i18n-en">Explore protocol and data-path RTL, or work on drivers in QEMU. These are separate paths—choose the one that fits your work.</span></p>
+        </div>
+        <div class="start-grid">
+          <article class="start-card reveal">
+            <span class="start-card-no">01 / PROTOCOL &amp; DATA PATH</span>
+            <h3><span class="i18n i18n-zh">ns-3 离线实验</span><span class="i18n i18n-en">ns-3 Offline Lab</span></h3>
+            <p><span class="i18n i18n-zh">从独立 ns-3 网络实验开始，再探索 TX RTL → ns-3 → RX RTL 的离线流水线。</span><span class="i18n i18n-en">Begin with a standalone ns-3 experiment, then explore the offline TX RTL → ns-3 → RX RTL pipeline.</span></p>
+            <div class="start-prereq"><span class="i18n i18n-zh">Linux 前置条件</span><span class="i18n i18n-en">LINUX PREREQUISITES</span><strong>git · make · g++ · Python 3 · CMake ≥ 3.25</strong><small><span class="i18n i18n-zh">Makefile 从 ~/.local/bin/cmake 查找 CMake；若未安装，可运行</span><span class="i18n i18n-en">The Makefile looks for ~/.local/bin/cmake; if missing, run</span> <code>python3 -m pip install --user cmake==3.31.10</code></small></div>
+            <div class="code-block"><div class="code-block-header"><span>TERMINAL / LINUX HOST</span><button type="button" data-copy-target="#ns3-code" aria-label="Copy ns-3 lab commands"><svg class="copy-icon" aria-hidden="true"><use href="#icon-copy"/></svg><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg><span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span></button></div><pre id="ns3-code" tabindex="0"><code><span class="prompt">$</span> git clone --branch dev https://github.com/open-rdma/open-rdma-driver.git
+<span class="prompt">$</span> cd open-rdma-driver/ns3/OpenRDMA-Offline
+<span class="prompt">$</span> make -C Ns3-lab build
+<span class="prompt">$</span> make -C Ns3-lab lab1</code></pre></div>
+            <div class="start-substep"><strong>TX RTL → ns-3 → RX RTL</strong><p><span class="i18n i18n-zh">完整离线流水线还需 bsc、Verilator 和 cocotb 2。</span><span class="i18n i18n-en">The full offline pipeline also needs bsc, Verilator, and cocotb 2.</span></p><div class="code-block"><div class="code-block-header"><span>TERMINAL / OFFLINE LAB</span><button type="button" data-copy-target="#ns3-pipeline-code" aria-label="Copy offline pipeline command"><svg class="copy-icon" aria-hidden="true"><use href="#icon-copy"/></svg><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg><span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span></button></div><pre id="ns3-pipeline-code" tabindex="0"><code><span class="prompt">$</span> make COCOTB_PYTHON=/path/to/cocotb2/bin/python3</code></pre></div></div>
+            <div class="start-caveat"><span class="i18n i18n-zh">离线实验自包含，不验证整个 M0–M11 模块树。持续开发中的模块见</span><span class="i18n i18n-en">This self-contained lab does not test every M0–M11 module. See the actively developed</span> <a href="https://github.com/open-rdma/open-rdma-design/tree/paper-ji/OpenRDMA-flow" target="_blank" rel="noopener noreferrer">OpenRDMA-flow</a><span class="i18n i18n-en"> module tree</span>。</div>
+            <a class="start-docs-link" href="https://github.com/open-rdma/open-rdma-driver/blob/dev/ns3/OpenRDMA-Offline/README.md" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">查看离线实验指南</span><span class="i18n i18n-en">Read the Offline Lab guide</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          </article>
+          <article class="start-card reveal" data-delay="1">
+            <span class="start-card-no">02 / DRIVER &amp; QEMU</span>
+            <h3><span class="i18n i18n-zh">驱动开发环境</span><span class="i18n i18n-en">Driver &amp; QEMU environment</span></h3>
+            <p><span class="i18n i18n-zh">在 Docker 中启动工具链和 QEMU 虚拟机，独立验证内核态与用户态驱动。</span><span class="i18n i18n-en">Launch the toolchain and QEMU VM in Docker to work on kernel and user-space drivers, separately from the ns-3 lab.</span></p>
+            <div class="start-prereq"><span class="i18n i18n-zh">Linux 前置条件</span><span class="i18n i18n-en">LINUX PREREQUISITES</span><strong>Docker · Docker Compose</strong></div>
+            <div class="code-block"><div class="code-block-header"><span>TERMINAL / HOST</span><button type="button" data-copy-target="#setup-code" aria-label="Copy setup commands"><svg class="copy-icon" aria-hidden="true"><use href="#icon-copy"/></svg><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg><span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span></button></div><pre id="setup-code" tabindex="0"><code><span class="prompt">$</span> git clone https://github.com/open-rdma/open-rdma-dev-env.git
+<span class="prompt">$</span> cd open-rdma-dev-env
+<span class="prompt">$</span> ./quick-start.sh</code></pre></div>
+            <div class="start-substep"><strong><span class="i18n i18n-zh">在虚拟机内验证</span><span class="i18n i18n-en">VERIFY INSIDE THE VM</span></strong><p><span class="i18n i18n-zh">使用 root:root 登录虚拟机，再运行基础双端测试。</span><span class="i18n i18n-en">Sign in to the VM as root:root, then run the baseline send/recv test.</span></p><div class="code-block"><div class="code-block-header"><span>TERMINAL / QEMU VM</span><button type="button" data-copy-target="#verify-code" aria-label="Copy verification commands"><svg class="copy-icon" aria-hidden="true"><use href="#icon-copy"/></svg><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg><span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span></button></div><pre id="verify-code" tabindex="0"><code><span class="prompt">$</span> cd /root/open-rdma/open-rdma-driver
+<span class="prompt">$</span> ./tests/base_test/scripts/test_send_recv_sim.sh</code></pre></div></div>
+            <a class="start-docs-link" href="https://github.com/open-rdma/open-rdma-dev-env" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">查看开发环境文档</span><span class="i18n i18n-en">Read the development environment guide</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section news-section" id="news" aria-labelledby="news-title">
+      <div class="container">
+        <div class="section-heading split reveal"><div><span class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span><span class="i18n i18n-zh">近期事件</span><span class="i18n i18n-en">RECENT MILESTONES</span></span><h2 id="news-title"><span class="i18n i18n-zh">每一步进展，<br>都向世界开放。</span><span class="i18n i18n-en">Built in the open.<br>Shared as we go.</span></h2></div><p><span class="i18n i18n-zh">从论文发布到数据通路实现，Open-RDMA 的每一个里程碑都来自开放协作。</span><span class="i18n i18n-en">From our paper to transport development, every Open-RDMA milestone is part of an open, collaborative journey.</span></p></div>
+        <div class="news-grid">
+          <a class="news-feature reveal" href="https://arxiv.org/abs/2611.07559" target="_blank" rel="noopener noreferrer"><span class="news-feature-meta"><time datetime="2026-11-06">2026.11.06</time><span>PAPER / ARXIV</span></span><div><span class="news-feature-tag"><span class="i18n i18n-zh">最新发布</span><span class="i18n i18n-en">LATEST RELEASE</span></span><h3><span class="i18n i18n-zh">OpenRDMA 论文<br>现已发布</span><span class="i18n i18n-en">The OpenRDMA<br>paper is published</span></h3><p><span class="i18n i18n-zh">阅读我们的系统设计与研究工作。</span><span class="i18n i18n-en">Explore the system design and research behind OpenRDMA.</span></p></div><span class="news-feature-cta"><span class="i18n i18n-zh">阅读论文</span><span class="i18n i18n-en">Read the paper</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></span></a>
+          <div class="news-timeline reveal" data-delay="1">
+            <a class="news-item" href="https://github.com/open-rdma/open-rdma-rtl" target="_blank" rel="noopener noreferrer"><time datetime="2026-10-23">2026.10.23</time><span><span class="i18n i18n-zh">软硬件协同重传开发完成</span><span class="i18n i18n-en">Hardware-software co-designed retransmission completed</span></span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            <a class="news-item" href="https://github.com/open-rdma/open-rdma-driver/tree/dev/ns3/OpenRDMA-Offline" target="_blank" rel="noopener noreferrer"><time datetime="2026-10-23">2026.10.23</time><span><span class="i18n i18n-zh">基于 ns-3 的项目实验指南上线</span><span class="i18n i18n-en">ns-3 project lab guide released</span></span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            <div class="news-item"><time datetime="2026-10-08">2026.10.08</time><span><span class="i18n i18n-zh">协议接收架构开发完成</span><span class="i18n i18n-en">Protocol receive architecture completed</span></span></div>
+            <div class="news-item"><time datetime="2026-09-24">2026.09.24</time><span><span class="i18n i18n-zh">协议发送架构开发完成</span><span class="i18n i18n-en">Protocol transmit architecture completed</span></span></div>
+          </div>
+        </div>
+        <details class="news-more reveal"><summary><span><span class="i18n i18n-zh">更多里程碑</span><span class="i18n i18n-en">More milestones</span> <span class="news-count">05</span></span><span class="news-expand-icon" aria-hidden="true">+</span></summary><div class="news-archive">
+          <a class="news-item" href="https://raw.githubusercontent.com/jzhg6/open-rdma/star-history-assets/star.png" target="_blank" rel="noopener noreferrer"><time datetime="2026-08-31">2026.08.31</time><span><span class="i18n i18n-zh">Open-RDMA 项目 Star 数量突破 350</span><span class="i18n i18n-en">Open-RDMA project surpasses 350 stars</span></span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          <a class="news-item" href="https://emanuelef.github.io/daily-stars-explorer/#/open-rdma/open-rdma" target="_blank" rel="noopener noreferrer"><time datetime="2026-05-20">2026.05.20</time><span><span class="i18n i18n-zh">Open-RDMA 项目 Star 数量突破 250</span><span class="i18n i18n-en">Open-RDMA project surpasses 250 stars</span></span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          <a class="news-item" href="https://github.com/open-rdma/open-rdma-driver/blob/dev/docs/zh-CN/records/weekly-report/2026-05-07.md" target="_blank" rel="noopener noreferrer"><time datetime="2026-05-07">2026.05.07</time><span><span class="i18n i18n-zh">开源周报第 18 期发布</span><span class="i18n i18n-en">Weekly Report #18 released</span></span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          <a class="news-item" href="https://github.com/open-rdma/open-rdma-driver/blob/dev/docs/zh-CN/records/weekly-report/2026-04-09.md" target="_blank" rel="noopener noreferrer"><time datetime="2026-04-09">2026.04.09</time><span><span class="i18n i18n-zh">开源周报第 14 期发布</span><span class="i18n i18n-en">Weekly Report #14 released</span></span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          <a class="news-item" href="https://github.com/open-rdma/open-rdma-driver/blob/dev/docs/zh-CN/records/weekly-report/2026-04-02.md" target="_blank" rel="noopener noreferrer"><time datetime="2026-04-02">2026.04.02</time><span><span class="i18n i18n-zh">开源周报第 13 期发布</span><span class="i18n i18n-en">Weekly Report #13 released</span></span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+        </div></details>
+        <a class="news-readme" data-readme-link href="https://github.com/open-rdma/open-rdma/blob/master/README.md" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">在 README 查看全部进展</span><span class="i18n i18n-en">Read the full project history in README</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <section class="section community-section" id="community" aria-labelledby="community-title"><div class="community-light" aria-hidden="true"></div><div class="container community-content reveal"><span class="eyebrow community-eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span>BUILD IN THE OPEN</span><h2 id="community-title"><span class="i18n i18n-zh">开放网络，<br>由我们共同构建。</span><span class="i18n i18n-en">An open network.<br>Built together.</span></h2><p><span class="i18n i18n-zh">无论你来自 FPGA、驱动、验证还是 GPU 算法领域，都能在这里找到一条通往开放 RDMA 的路径。</span><span class="i18n i18n-en">FPGA, drivers, verification, or GPU algorithms—there's a path for you in open RDMA.</span></p><div class="community-actions"><a class="button button-primary" href="https://github.com/open-rdma/open-rdma" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-github"/></svg><span class="i18n i18n-zh">探索 GitHub</span><span class="i18n i18n-en">Explore on GitHub</span></a><a class="button button-ghost" href="https://github.com/open-rdma/open-rdma/discussions" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">加入社区讨论</span><span class="i18n i18n-en">Join the discussion</span><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a></div><div class="community-paths"><a href="https://github.com/open-rdma/open-rdma-rtl" target="_blank" rel="noopener noreferrer">RTL / FPGA <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a><a href="https://github.com/open-rdma/open-rdma-driver" target="_blank" rel="noopener noreferrer">DRIVER / SYSTEMS <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a><a href="https://github.com/open-rdma/UCAgent" target="_blank" rel="noopener noreferrer">VERIFICATION / AI <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a></div>
+      <div class="contact-panel" id="contact" aria-labelledby="contact-title">
+        <div class="contact-intro">
+          <span class="contact-kicker">CONNECT / DATENLORD</span>
+          <h3 id="contact-title"><span class="i18n i18n-zh">关注我们，<br>保持连接。</span><span class="i18n i18n-en">Stay in touch.<br>Build together.</span></h3>
+          <p><span class="i18n i18n-zh">通过项目发起方达坦科技的媒体和社群渠道，了解动态、交流 Rust、硬件验证与 AI Infra。</span><span class="i18n i18n-en">Connect through Datanlord, a co-initiator of Open-RDMA, for updates and conversations on Rust, hardware verification, and AI Infra.</span></p>
+          <span class="contact-channel-note"><span class="i18n i18n-zh">技术交流 · 开源协作 · 社区讨论</span><span class="i18n i18n-en">TECHNICAL EXCHANGE · OPEN COLLABORATION</span></span>
+        </div>
+        <div class="contact-links">
+          <div class="contact-link contact-static"><span class="contact-link-label"><span class="i18n i18n-zh">微信公众号</span><span class="i18n i18n-en">WeChat official account</span></span><strong><span class="i18n i18n-zh">达坦科技DatenLord</span><span class="i18n i18n-en">达坦科技DatenLord</span></strong></div>
+          <a class="contact-link" href="https://datenlord.github.io/" target="_blank" rel="noopener noreferrer"><span class="contact-link-label"><span class="i18n i18n-zh">DatenLord 官网</span><span class="i18n i18n-en">Datanlord website</span></span><strong>datenlord.github.io</strong><svg aria-hidden="true"><use href="#icon-external"/></svg></a>
+          <a class="contact-link" href="https://www.zhihu.com/org/da-tan-ke-ji" target="_blank" rel="noopener noreferrer"><span class="contact-link-label"><span class="i18n i18n-zh">知乎账号</span><span class="i18n i18n-en">Zhihu</span></span><strong><span class="i18n i18n-zh">达坦科技</span><span class="i18n i18n-en">Datanlord</span></strong><svg aria-hidden="true"><use href="#icon-external"/></svg></a>
+          <a class="contact-link" href="https://space.bilibili.com/2017027518" target="_blank" rel="noopener noreferrer"><span class="contact-link-label"><span class="i18n i18n-zh">B站</span><span class="i18n i18n-en">Bilibili</span></span><strong>DatenLord</strong><svg aria-hidden="true"><use href="#icon-external"/></svg></a>
+          <a class="contact-link" href="mailto:info@datenlord.com"><span class="contact-link-label"><span class="i18n i18n-zh">电子邮箱</span><span class="i18n i18n-en">Email</span></span><strong>info@datenlord.com</strong><svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          <div class="wechat-contact" data-wechat-contact>
+            <button class="contact-link contact-wechat-trigger" type="button" data-wechat-trigger aria-expanded="false" aria-controls="wechat-code"><span class="contact-link-label"><span class="i18n i18n-zh">微信社群 · 悬停或点击查看二维码</span><span class="i18n i18n-en">WeChat groups · Hover or tap for QR code</span></span><strong><span class="i18n i18n-zh">小助手：DatenLord_Tech</span><span class="i18n i18n-en">Assistant: DatenLord_Tech</span></strong><svg aria-hidden="true"><use href="#icon-arrow"/></svg></button>
+            <div class="wechat-popover" id="wechat-code" data-wechat-popover><img src="assets/site/datenlord-tech-wechat.png" alt="QR code for the DatenLord_Tech WeChat assistant" width="256" height="256" loading="lazy" data-wechat-image><span><span class="i18n i18n-zh">微信扫码添加小助手，申请加入交流群</span><span class="i18n i18n-en">Scan in WeChat to contact the assistant about community groups</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-main"><div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Open-RDMA</span></a><p><span class="i18n i18n-zh">开放网络，开放未来。</span><span class="i18n i18n-en">Open Network. Open Future.</span></p></div><nav class="footer-links" aria-label="Footer navigation"><a href="#why"><span class="i18n i18n-zh">设计理念</span><span class="i18n i18n-en">The idea</span></a><a href="#architecture"><span class="i18n i18n-zh">系统架构</span><span class="i18n i18n-en">Architecture</span></a><a href="#ecosystem"><span class="i18n i18n-zh">项目生态</span><span class="i18n i18n-en">Ecosystem</span></a><a href="#start"><span class="i18n i18n-zh">快速开始</span><span class="i18n i18n-en">Get started</span></a><a data-contribution-link href="https://github.com/open-rdma/open-rdma/blob/master/CONTRIBUTING_CN.md" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">贡献指南</span><span class="i18n i18n-en">Contributing</span></a><a href="https://arxiv.org/abs/2611.07559" target="_blank" rel="noopener noreferrer"><span class="i18n i18n-zh">论文</span><span class="i18n i18n-en">Paper</span></a><a href="https://github.com/open-rdma/open-rdma/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">Apache 2.0</a></nav></div><div class="container footer-bottom"><span>© <span data-current-year>2026</span> Open-RDMA Community</span><span><span class="i18n i18n-zh">琶洲实验室（黄埔） × 达坦科技发起 · 由开放社区共同构建</span><span class="i18n i18n-en">Initiated by Pazhou Laboratory (Huangpu) and Datanlord · Built in the open</span></span></div></footer>
+  <script src="assets/site/app.js" defer></script>
+</body>
+</html>
